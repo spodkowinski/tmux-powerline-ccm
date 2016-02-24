@@ -1,17 +1,6 @@
 # Outputs list of PIDs if processes are running
 
-
-# pgrep shipped by OSX is not able to deal with large a argument list and
-# you should brew install proctools instead
-if [ $(uname -s) = 'Darwin' ]; then
-   if [ -f /usr/local/bin/pgrep ]; then
-      TMUX_POWERLINE_SEG_PROCESS_CMD_DEFAULT="/usr/local/bin/pgrep -f CassandraDaemon"
-   else
-      TMUX_POWERLINE_SEG_PROCESS_CMD_DEFAULT="pgrep -f cassandra"
-   fi
-else
-   TMUX_POWERLINE_SEG_PROCESS_CMD_DEFAULT="pgrep -f CassandraDaemon"
-fi
+TMUX_POWERLINE_SEG_PROCESS_CMD_DEFAULT="pgrep -f cassandra.logdir"
 
 generate_segmentrc() {
    read -d '' rccontents  << EORC
